@@ -1,0 +1,80 @@
+#3A
+my_string = "ATGC"
+my_string = my_string + "XXX"
+print (my_string)
+
+#3B
+my_string = "ATGC"
+my_string = my_string * 4
+print (my_string)
+
+#3C
+res = 0
+for i in my_string:
+    res = res + 1
+print (res)
+
+#3D
+string = "AAAAGGAAAAGGAAAA"
+
+print (string.find("GG"))
+
+for i in string:      #i works as an index, goes through each letter
+    if i == 'GC':
+        print (string.find("GG"))  #if we come across GC then we find and print its position
+
+    
+#3E
+print (string.count("AAAA"))
+print (string.count("AAA"))
+print (string.count("AA"))
+print (string.count("A"))
+
+#with "AAA" and "AA" the function is able to read the fram in only one way, leaving out some of the possibilities
+#could be fixed by using the for loop and indexing
+for i in range(len(string)):
+    string[i:i+2]
+    if i == 'AAA':
+        print (i)
+
+for i in range(len(string)):
+    string[i:i+2]
+    if i == 'AA':
+        print (i)
+
+#3F
+s1 = "AcgT"
+s2 = "acGT"
+
+for a in range(len(s1)):
+    string[a]
+    for b in range(len(s2)):
+        string[b]
+        if a == b:
+            print(a)
+#4
+output = "My name is {initial} {surn}".format(initial="Karl", surn = "Johansson")   #1
+print(output)
+output = "My name is {surn} {initial}".format(initial="Karl", surn = "Johansson")   #2
+print(output)
+output = "My name is I{initial} {surn}".format(initial="Karl", surn = "Johansson")   #2
+print(output)
+output = "My name is {initial} {surn}".format(initial="Karl"*2, surn = "Johansson"[:4])   #2
+print(output)
+
+
+#Study questions
+    #Numbers
+#1
+for i in range(1000):
+        if i%3==0:
+            print(i)
+#2
+for i in range(3000,4000):
+    if i%3==0 & i%5!=0:
+        print(i)
+        
+#3
+n = 
+for i in n:
+    i
