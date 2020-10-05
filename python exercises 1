@@ -86,4 +86,10 @@ while a < n:
     a = a*n
     n =-1
 print (a)
+
+
+Strings
+seq = ["A", "C", "T", "G"]
+AA = random.choices(seq, k=5)
+print(AA)
     
