@@ -78,3 +78,12 @@ for i in range(3000,4000):
 n = 
 for i in n:
     i
+        
+#4
+n = 5
+a= 1
+while a < n:
+    a = a*n
+    n =-1
+print (a)
+    
