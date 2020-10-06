@@ -2,5 +2,20 @@ You can split a string into a list with .split() method
 s = input()
 list = s.split()
 print (list)
+[] denotes a list, () denotes a tuple and {} denotes a dictionary.
 
 
+Python has a built-in function called sorted, which will give you a sorted list from any iterable you feed it (such as a list ([1,2,3]); a dict ({1:2,3:4}, although it will just return a sorted list of the keys; a set ({1,2,3,4); or a tuple ((1,2,3,4))).
+
+>>> x = [3,2,1]
+>>> sorted(x)
+[1, 2, 3]
+>>> x
+[3, 2, 1]
+
+Lists also have a sort method that will perform the sort in-place (x.sort() returns None but changes the x object) .
+
+>>> x = [3,2,1]
+>>> x.sort()
+>>> x
+[1, 2, 3]
