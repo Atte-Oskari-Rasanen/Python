@@ -1,0 +1,6 @@
+You can split a string into a list with .split() method
+s = input()
+list = s.split()
+print (list)
+
+
