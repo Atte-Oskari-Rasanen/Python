@@ -19,3 +19,65 @@ Lists also have a sort method that will perform the sort in-place (x.sort() retu
 >>> x.sort()
 >>> x
 [1, 2, 3]
+
+
+
+
+#Collection data types: iterables
+#1
+#%%
+s = input("Give numbers: ")
+l = s.split()
+print (l)
+combined = sum(l)
+print (combined)
+
+
+
+nt = set(['A', 'T','C','G'])
+#%%
+#2
+import itertools
+
+nt = 'ATCG'
+codons = (set(itertools.permutations(nt,3)))
+print (codons)
+out = list(codons)
+print (out)
+
+#%%
+#3
+leucine = ['CUU', 'CUC', 'CUA', 'CUG']
+for i in codons:
+    if i == leucine:
+        print(i)
+#%%
+#Collection data types dictionaries
+#1
+my_dict = {}
+print(my_dict)
+my_dict["apples"]=4
+my_dict["pears"]=2
+my_dict["oranges"]=2
+print(my_dict)
+
+
+my_dict = {"apples": 4, "pears": 2, "oranges": 2}
+#2
+my_dict["watermelon"]=1
+my_dict["pears"]+=2
+my_dict["oranges"]+=5
+print(my_dict)
+#3
+for key, value in my_dict.items():
+    print(key, ':', value)
+#4
+
+for i, j in my_dict.items(): 
+    sorted_dict ={i:sorted(j)} 
+    print(sorted_dict) 
+#sorted_dict=sorted(my_dict)
+#print(sorted_dict)
+    
+#sorted_dict=iter(sorted(my_dict.key()))
+#print(sorted_dict)
