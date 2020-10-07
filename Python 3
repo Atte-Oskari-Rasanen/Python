@@ -1,0 +1,29 @@
+
+y=x[:];
+even if x=y, now they are called different - they become different objects 
+if y=x --- TRUE
+but y is x ---- FALSE
+
+
+As you progress, you should keep saving scripts, commands etc that are needed
+
+enumerate() a useful function besides else, if etc 
+   - gives both an index and the corresponding item
+Raise() function to tell python about errors, for example that you cannot have negative children or B in the DNA. 
+
+num_of_children=-1
+if num_of_children < 0:
+    raise Exception('Number of children cannot be negative')
+    
+Another function to make sure your code is robust
+You can try if something is true with try() and thus, contain the error instead of ending
+    while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+        
+  Raise() and try() (along with except()) should be applied in your code to make sure that your code cannot be broken 
+  
+x=0; y=1; t=0 sum_t=0 while t<1000: t = x+y; x=y; y=t; if t%2==0: sum_t = sum_t+t; print(sum_t) 
