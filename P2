@@ -29,12 +29,13 @@ Lists also have a sort method that will perform the sort in-place (x.sort() retu
 s = input("Give numbers: ")
 l = s.split()
 print (l)
-combined = sum(l)
-print (combined)
+#combined = sum(l)
+#print (combined)
 
+for i in range(s):    
+    int(l.append(s))
+print(sum(l))
 
-
-nt = set(['A', 'T','C','G'])
 #%%
 #2
 import itertools
@@ -43,14 +44,31 @@ nt = 'ATCG'
 codons = (set(itertools.permutations(nt,3)))
 print (codons)
 out = list(codons)
-print (out)
+print(out)
 
+#%%
+#2 ver.2
+codons = ['A','T','G','C']
+for a in codons:
+    for b in codons:
+        for c in codons:
+            codons.append(a+b+c)
+print(codons)
+
+#%%
+#2 ver.3   #BEST ONE for exercise 2!!!!
+
+nt=['A','T','G','C']
+codons=[a+b+c for a in nt for b in nt for c in nt]
+print(codons)
 #%%
 #3
 leucine = ['CUU', 'CUC', 'CUA', 'CUG']
-for i in codons:
-    if i == leucine:
-        print(i)
+for a in codons:
+    for b in codons:
+        for c in codons:
+            codons.append(a+b+c)
+print(codons)
 #%%
 #Collection data types dictionaries
 #1
@@ -81,3 +99,9 @@ for i, j in my_dict.items():
     
 #sorted_dict=iter(sorted(my_dict.key()))
 #print(sorted_dict)
+
+#5
+friend_week_fruits = {'apples':2, 'pears':1, 'oranges':2,
+'waxberry':4}
+
+
