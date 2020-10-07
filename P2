@@ -105,3 +105,104 @@ friend_week_fruits = {'apples':2, 'pears':1, 'oranges':2,
 'waxberry':4}
 
 
+
+#Collection data types: iterables
+#1
+#%%
+s = input("Give numbers: ")
+l = s.split(" ")
+print (l)
+#combined = sum(l)
+#print (combined)
+lsum = 0
+for i in l:    
+    i = int(i)
+    lsum += i
+print(lsum)
+
+
+#1 ver.2
+numbers= input('Sequence of numbers: ')
+num_list = numbers.split(',')
+sum_var=0
+for i in num_list:
+    sum_var += int(i)
+
+print(sum_var) 
+#%%
+#2
+import itertools
+
+nt = 'ATCG'
+codons = (set(itertools.permutations(nt,3)))
+print (codons)
+out = list(codons)
+print (out)
+
+#%%
+#2 ver.2
+codons = ['A','T','G','C']
+lista = []
+for a in codons:
+    for b in codons:
+        for c in codons:
+            lista.append(a+b+c)
+print(lista)
+
+#%%
+#2 ver.3   #BEST ONE for exercise 2!!!!
+
+nt=['A','T','G','C']
+codons=[a+b+c for a in nt for b in nt for c in nt]
+print(codons)
+#%%
+#3
+leucine = ['CUU', 'CUC', 'CUA', 'CUG']
+codons = ['A','T','G','C']
+lista = []
+for a in codons:
+    for b in codons:
+        for c in codons:
+            lista.append(a+b+c)
+            if leucine in lista:
+                
+#%%
+with open ("regions.fna") as regions:
+    for i in regions:
+        if i.startswith('>'):
+            print(i)
+
+#%%
+#Collection data types dictionaries
+#1
+my_dict = {}
+print(my_dict)
+my_dict["apples"]=4
+my_dict["pears"]=2
+my_dict["oranges"]=2
+print(my_dict)
+
+
+my_dict = {"apples": 4, "pears": 2, "oranges": 2}
+#2
+my_dict["watermelon"]=1
+my_dict["pears"]+=2
+my_dict["oranges"]+=5
+print(my_dict)
+#3
+for key, value in my_dict.items():
+    print(key, ':', value)
+#4
+
+for i, j in my_dict.items(): 
+    sorted_dict ={i:sorted(j)} 
+    print(sorted_dict) 
+#sorted_dict=sorted(my_dict)
+#print(sorted_dict)
+    
+#sorted_dict=iter(sorted(my_dict.key()))
+#print(sorted_dict)
+#5
+friend_week_fruits = {'apples':2, 'pears':1, 'oranges':2,
+'waxberry':4}
+
