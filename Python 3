@@ -27,3 +27,9 @@ You can try if something is true with try() and thus, contain the error instead 
   Raise() and try() (along with except()) should be applied in your code to make sure that your code cannot be broken 
   
 x=0; y=1; t=0 sum_t=0 while t<1000: t = x+y; x=y; y=t; if t%2==0: sum_t = sum_t+t; print(sum_t) 
+
+
+To open a file: 
+with open ("regions.fna") as regions:
+   **you need to work within this block**
+
