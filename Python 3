@@ -32,4 +32,148 @@ x=0; y=1; t=0 sum_t=0 while t<1000: t = x+y; x=y; y=t; if t%2==0: sum_t = sum_t+
 To open a file: 
 with open ("regions.fna") as regions:
    **you need to work within this block**
+   https://stackabuse.com/reading-files-with-python/ more on files
+
+
+
+
+for num in range(10,20):
+    print('Main for loop: ', str(num))
+    if num%2 == 0:
+        print("   continuing...")
+        continue
+    for i in range(3,num):
+        if num%i == 0: 
+            print("   breaking...")
+            break
+    else: 
+        print('   ', num, 'is a prime number')
+        
+#%%
+while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+        
+#%%
+input_num1=int(input("Please enter the first number: "))
+input_num2=int(input("Please enter the second number: "))
+try:
+    x=input_num1/input_num2
+    print(x)
+except ZeroDivisionError:
+    print("Nothing comes out, divided by zero")
+finally:
+    print('You finished this exercise')
+#%%
+terms=int(input("How far do we go?"))
+a1=0
+a2=1
+for i in terms:
+        print(a1 +a2)    
+        a1 = a1+1
+        a2 = a2+1
+        i = i + 1
+    else:
+        break
+    
+#%%
+series = [0,1]
+N=1000
+evensum = 2
+if 2<N:
+	for i in range(2, N):
+		nextElement = series[i-1] + series[i-2]
+		series.append(nextElement)
+        if nextElement % 2 == 0:
+            evensum += nextElement
+            
+print(nextElement)
+    
+#%%
+
+fibonacci_list = [1,2] #
+
+fib_even_sum = 2
+
+for num in range(2, 1000):
+    fib_val = fibonacci_list[num-1] + fibonacci_list[num-2]
+    fibonacci_list.append(fib_val)
+    if fib_val > 1000:
+        break
+    if fib_val%2 == 0:
+        fib_even_sum += fib_val
+print(fib_even_sum) 
+
+#%%
+fib_list = [1, 1]
+sum_fib = 0
+fib_number = 2
+
+while fib_number < 1000:
+    fib_number = sum(fib_list[-2:])
+    fib_list.append(fib_number)
+    if fib_number % 2 == 0:
+        sum_fib += fib_number
+
+print(sum_fib)     
+
+
+#%%
+#Program control
+#1
+name = input("What's your name: ")
+
+if name == "atte":
+    print("So very nice to meet you " + name)
+else:
+    print("Hi " + name)
+    
+#%%
+#2
+name = input("What's your name: ")
+
+if name == "atte":
+    print("So very nice to meet you" + name)
+if name == "friend":
+    print("Hi " + name)
+
+else:
+    print("Hi " + name)
+
+    
+#%%
+#3
+
+
+while True:
+    number = int(input("Give a number: "))
+
+    if number%3==0 and number%5==0:
+        print("FizzBuzz")
+        
+    elif number%3 == 0:
+        print("Fizz")
+    elif number%5 == 0:
+        print("Buzz")
+    
+    else:
+        print(number)
+        break
+
+#%%
+
+for i in range(100):
+    if i%3==0 and i%5==0:
+        print("FizzBuzz")
+        
+    elif i%3 == 0:
+        print("Fizz")
+    elif i%5 == 0:
+        print("Buzz")
+    
+    else:
+        print(i)
 
