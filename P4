@@ -1,0 +1,49 @@
+File Modes in Python
+
+Following are various modes in Python
+Mode 	Description
+'r' 	This is the default mode. It Opens file for reading.
+'w' 	This Mode Opens file for writing.   -- this erases the contents of the file if there's any before opening it on python!
+'x' 	Creates a new file. If file already exists, the operation fails.
+'a' 	Open file in append mode.
+If file does not exist, it creates a new file.
+'t' 	This is the default mode. It opens in text mode.
+'b' 	This opens in binary mode.
+'+' 	This will open a file for reading and writing (updating)
+
+
+why do we need to readline() often before we start doing anything else with the opened file? 
+
+you can assign multiple methods to one variable, they are divided based on .  
+ds = line.replace('>', '').split()[0]
+
+
+
+
+#File Handling
+#1
+
+paxilfile1 = open('paxillus.fna', 'r')
+paxilfile2 = open('paxillusid.fna', 'w')
+for line in paxilfile1:
+    if line.startswith('>'):
+        ids = line.replace('>', '').split()[0]
+        paxilfile2.write(ids + "\n")        
+paxilfile2.close()
+
+#%%
+#2
+paxilfile1 = open('paxillus.fna', 'r')
+paxilfile2 = open('paxillusGC.fna', 'w')
+
+seq=[]
+for line in paxilfile1:
+    if "GC" in line:
+        total_l = len(line)
+        GCs = line.count("GC")
+        GC_cont = (GCs / total_l*100)
+        round(GC_cont,2).str(GC_cont)
+        seq.append(GC_cont)
+        paxilfile2.write(GC_cont)        
+        #print("GC%: ", seq, "%")
+paxilfile2.close()
