@@ -62,3 +62,37 @@ with open("malaria.fna", 'r') as malariafna:
 #output.close() 
 #malariablast.close()
 #malariafna.close()
+
+
+
+
+
+ver2
+with open("malaria.blastx.tab",'r') as malariablast:
+    data={}
+    for a in malariablast:
+        lineList = a.split("\t")   #spit makes the string into a list based on the delimiter, i.e. the tab
+        if "null" not in lineList:                  #if line we're at doesn't equal to null, then keep it
+            ids = lineList[0]
+            pname = lineList[9]
+            data[ids] = pname
+            #print(data)   
+    #, open("outputfile", "w") as output:
+            
+with open("malaria.fna", 'r') as malariafna:
+    Fasta = {}
+    for c in malariafna:
+            Fasta[c] = []
+            
+with open("malaria.fna", 'r') as malariafna:
+    for b in Fasta:                #we want to match the IDs from two files
+        if b.startswith('>'):           #find the line with IDs in fasta
+            malaline=b.replace('>', '').split('\t')[0]  #remove > and split the line based on tabs, select the fist fraction
+            #print(malaline) 
+            
+            if malaline in data:        #if this fraction found in blast data
+                #print(malaline, data[malaline])
+                Fasta[malanine] = data
+                data[ids].append(malaline)   #can't append dictionaries to strings!
+                #output.write(malaline)
+                print(malaline)
