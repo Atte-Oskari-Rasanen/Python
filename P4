@@ -14,6 +14,13 @@ If file does not exist, it creates a new file.
 
 why do we need to readline() often before we start doing anything else with the opened file? 
 
+Because: Use file.readlines() to create a list where each element is a line from the file
+https://www.kite.com/python/answers/how-to-delete-a-line-from-a-file-in-python
+
+python regex and match
+https://www.youtube.com/watch?v=K8L6KVGG-7o
+https://www.guru99.com/python-regular-expressions-complete-tutorial.html
+
 you can assign multiple methods to one variable, they are divided based on .  
 ds = line.replace('>', '').split()[0]
 
@@ -47,3 +54,30 @@ for line in paxilfile1:
         paxilfile2.write(GC_cont)        
         #print("GC%: ", seq, "%")
 paxilfile2.close()
+
+
+
+
+with open("malaria.blastx.tab",'r') as malariablast:
+    data={}
+    for a in malariablast:
+        lineList = a.split("\t")   #spit makes the string into a list based on the delimiter, i.e. the tab
+        if "null" not in lineList:                  #if line we're at doesn't equal to null, then keep it
+            ids = lineList[0]
+            pname = lineList[9]
+            data[ids] = pname
+            #print(data)   
+    #, open("outputfile", "w") as output:
+dict.malaria.fna
+
+with open("malaria.fna", 'r') as malariafna:
+    for b in malariafna:
+        if b.startswith('>'):       
+            malaline=b.replace('>', '').split('\t')[0]
+            print(malaline)
+    #remove the > in the line, get the 1st column,i.e the id
+            if malaline in data:
+                print(data[malaline])
+                data[ids].append(malaline)
+                output.write(malaline)
+                print(malaline)
