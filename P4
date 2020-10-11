@@ -96,3 +96,47 @@ with open("malaria.fna", 'r') as malariafna:
                 data[ids].append(malaline)   #can't append dictionaries to strings!
                 #output.write(malaline)
                 print(malaline)
+
+
+
+
+
+
+
+
+#%%
+with open("malaria.blastx.tab",'r') as malariablast:      #1
+    data={}
+    for a in malariablast:
+        lineList = a.split("\t")        #split the list into parts
+        if "null" not in lineList:             
+            ids = lineList[0]           #select the first part(id)
+            pname = lineList[9]         #select the protein name
+            data[ids] = pname
+            #print(data)   
+            
+with open("malaria.fna", 'r') as malariafna:   #2
+    Fastadict = {}  
+    Header = {}
+    Header2 = []                            #create a dictionary for fasta file and a header
+    for a in malariafna:
+        a = a.replace('\n', '')        
+        if a.startswith('>'):           #find the line with IDs in fasta
+            fastaid = a.replace('>', '').split('\t')[0]
+            Header[fastaid] = a 
+        else:
+            Fastadict[fastaid] = a
+with open("malaria.fna", 'r') as malariafna, open("output.txt", "w") as output:               #3
+    for b in malariafna:                #we want to match the IDs from blast and fasta files
+        if b.startswith('>'):           #find the line with IDs in fasta
+            malaline=b.replace('>', '').replace('\n', '').split('\t')[0]  #remove '>' and split the line based on tabs, select the fist part                                       
+        #for line in Header:                  #going over each header         #4
+        if malaline in data:  
+            h = Header[malaline]+'\tprotein='+data[malaline]
+            Header2.append(h)             #So im trying to make header and data as one, then replace this header with the id lines of fasta file and create a new file
+                #print(Header2)
+    for aline in Header2: 
+        output.write(aline + '\n')
+        aline=aline.replace('>', '')
+        fileids=aline.split('\t')[0]
+        output.write(Fastadict[fileids])
