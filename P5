@@ -139,3 +139,43 @@ with open("fasta.fna") as fasta:
         else:
             data[idkey] = line
     print(data)
+    
+    
+    #%%
+#12
+with open("fasta.txt") as fasta:
+    data = {}
+    Header = {}
+    for line in fasta:
+        line = line.replace('\n', '')  
+        #print(line)
+        if line.startswith('>'):           
+            idkey = line.replace('>', '').split('\t')[0]
+            #print(idkey)
+            Header[idkey] = line 
+        else:
+            data[idkey] = line
+    E = 0
+    for i in data: 
+        E +=1
+        print("Entry {} has a header: {} and sequence: {}".format(E, Header[i], data[i]))
+
+#%%
+#13
+def load_fasta(filename):
+    with open(filename) as fasta:
+        data = {}
+        Header = {}
+        for line in fasta:
+            line = line.replace('\n', '')  
+            #print(line)
+            if line.startswith('>'):           
+                idkey = line.replace('>', '').split('\t')[0]
+                #print(idkey)
+                Header[idkey] = line 
+            else:
+                data[idkey] = line
+        print(data)
+Fasta_dict = load_fasta("fasta.txt")
+Fasta_dict
+
