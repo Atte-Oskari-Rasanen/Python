@@ -4,3 +4,138 @@ functions after the main function can change the original functions values - not
 - either make a copy of the mian funciton or use none argument inside it
 
 functions can return values, if n
+
+
+#Python 5 Functions
+
+
+#1
+def print_line():
+    print("This is a function!")
+print_line()
+
+#%%
+#2
+def print_line():
+    return "This is a function!"          #you could instead also use print() but you already
+                                        #use print outside the loop so it'll print the inside and then outside("none")
+                                                #https://stackoverflow.com/questions/28812851/why-is-this-printing-none-in-the-output
+     
+r = print_line()
+print(r)
+print(r[0])
+#print(r[0])
+
+#%%
+#3
+def greet(n1,n2):
+    print("Hello ", n1, " and ", n2, "!")
+    return
+g = greet("hans","björn")
+g
+
+#%%
+#4
+def greet(n1="?",n2="?"):                   #you can give default values to the parameters here and change them outside the function
+    print("Hello ", n1, " and ", n2, "!")
+g = greet()
+g
+#%%
+#5
+def multiply(n1,n2):
+    return n1 * n2 
+def add(n1,n2):
+    return n1 + n2 
+m = print(multiply(2,3))
+a = print(add(2,3))
+
+#%%
+#6
+def calculate(n1,n2,operation):
+    if operation == "add":
+        print(n1 + n2)    
+        return 
+    elif operation == "multiply":
+        print(n1 * n2)    
+        return 
+    
+calculate(2,3,"multiply")
+calculate(2,3,"add")
+
+#%%
+#7
+def get_gc(NT):
+    print((NT.count("G") + NT.count("C")) / len(NT))
+    return    
+
+get_gc("CACAGGTT")
+
+#%%
+#8
+def many_hi(x):
+    i=0
+    while i<x:
+        i+=1
+        print("Hi!")
+    return
+many_hi(1)
+many_hi(3)
+
+#%%
+#9
+def many_hi(x):
+    i=0
+    hi_list = []
+    s="hi"
+    while i<x:
+        i+=1
+        hi_list.append(s)
+    print(hi_list)
+    return
+many_hi(1)
+many_hi(3)
+#%%
+#10
+def many_hi(x,word="hi"):
+    i=0
+    hi_list = []
+    s=word
+    while i<x:
+        i+=1
+        hi_list.append(s)
+    print(hi_list)
+    return
+many_hi(1, "jei")
+many_hi(3)
+
+#%%
+#11
+with open("fasta.fna") as fasta:
+    data = {}
+    Header = {}
+    for line in fasta:
+        line = line.replace('\n', '')  
+        #print(line)
+        if line.startswith('>'):           
+            idkey = line.replace('>', '').split('\t')[0]
+            #print(idkey)
+            Header[idkey] = line 
+        else:
+            data[idkey] = line
+    print(data)
+
+#%%
+#12
+with open("fasta.fna") as fasta:
+    data = {}
+    Header = {}
+    for line in fasta:
+        line = line.replace('\n', '')  
+        #print(line)
+        if line.startswith('>'):           
+            idkey = line.replace('>', '').split('\t')[0]
+            #print(idkey)
+            Header[idkey] = line 
+        else:
+            data[idkey] = line
+    print(data)
