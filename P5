@@ -1,0 +1,6 @@
+you can delete the code implementation with del() in the ipython (siin mis koodi pyörii) jos se ei onnistu suorittamaan koodia vaikka käsketki sitä tekee jotai 
+
+functions after the main function can change the original functions values - not wanted - there are tw oways of passing through a function - by ref and by passing value(updates the main functions value too, not wanted)
+- either make a copy of the mian funciton or use none argument inside it
+
+functions can return values, if n
