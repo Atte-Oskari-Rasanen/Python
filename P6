@@ -2,8 +2,7 @@ RegEx
 especially important in bioinformatics when looking at patterns
 REobj = re.compile('\s(DNA|RNA)\.')
 s refers to empty space. So after white space you search for DNA or RNA. dot(.) in the end means the end of command
-if there are no spaces
-
+so find white space followed by either DNA or RNA
 REobj = re.compile('\d+')
 matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(matchstr10.group())
 >2012
