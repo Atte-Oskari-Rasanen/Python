@@ -1,0 +1,22 @@
+RegEx
+especially important in bioinformatics when looking at patterns
+REobj = re.compile('\s(DNA|RNA)\.')
+s refers to empty space. So after white space you search for DNA or RNA. dot(.) in the end means the end of command
+
+REobj = re.compile('\d+')
+matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(matchstr10.group())
+>2012
+
+REobj = re.compile('\D+\d+')
+matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(matchstr10.group())
+>In the year of 2012
+
+REobj = re.compile('\D+\d+\D+')
+matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(matchstr10.group())
+In the year of 2012 the world did not end
+
+REobj = re.compile('\D+\d+.')
+matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(matchstr10.group())
+In the year of 2012 the world did not end
+d-digits
++-all digits after the first one
