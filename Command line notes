@@ -1,0 +1,51 @@
+ #%%
+#av.2
+
+regex_dict = {'\d' : 'digits'
+              's' : 'spaces'
+              '[A-Z]': 'upper'
+              }
+s = input('Enter random text: ')
+result = 'contains'
+for key in regex_dict:
+    if re.search(key, s):
+        result += regex_dict[key] + ', '
+if len(result)>9:
+    print(result.rstrip(', ') + '.')
+else:
+    print('contains none')
+    
+#you could also start with an empty string
+    instead of if len>9
+    
+    #%%
+#a
+def match(arb_string):
+    end_string = ''  #starts with empty string
+    if re.search('[A-Z].*', arb_string):
+        end_string += 'contains upper case \n'
+    if re.search('[a-z].*', arb_string):
+        end_string += 'contains lower case \n'
+    if re.search('d', arb_string):
+        end_string += 'contains digits \n'
+    if re.search('\s', arb_string):
+        end_string += 'contains spaces \n'
+    
+    
+    print(end_string or 'doesnt contain any of the special characters')
+    
+    
+    #b)
+with open("pgi.tre") as pgi:
+    pgi.readline()
+    line = line.rstrip()
+    #if line.startswith('('):
+
+    
+login to the distant server, if you dont remember the server, ctrl r and enter ssh to access the latest server
+when logged in navigate to the folder you wanna upload, find out the path with pwd and copy it, then exit the distant server
+type in: scp -r inf-54-2020@bioinf-serv2.cob.lu.se:/resources/binp16/Data .
+to copy the contents of the folder
+
+
+
