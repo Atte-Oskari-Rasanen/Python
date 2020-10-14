@@ -68,9 +68,10 @@ with open("pgi.tre") as pgi, open("output.txt","w") as output:
 #%%
 #c)
 with open("regions.fna") as regions, open("output.fna","w") as output:
-    seq = input('Enter the sequence')
+    seq = input('Enter the sequence: ')
     output_fasta = []
     for lines in regions:
-        if re.search(seq, regions):
+        if re.search('seq', regions):
             output_fasta.append(lines)
+        print(output_fasta)
             
