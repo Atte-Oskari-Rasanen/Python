@@ -20,3 +20,57 @@ matchstr10 = REobj.search('In the year of 2012 the world did not end'); print(ma
 In the year of 2012 the world did not end
 d-digits
 +-all digits after the first one
+
+
+#RegEx
+#1
+import re
+input_string=input('input something: ')
+output_string=''
+if re.search('[A-Z].*', input_string):
+    output_string += 'upper case '
+if re.search('[a-z].*', input_string):
+    output_string +='lower case '
+if re.search('\s', input_string):
+    output_string +='space '
+if re.search('d', input_string):
+    output_string +='number '
+print('Characters found: ', output_string)       
+
+#2
+#%%
+#b)
+with open("pgi.tre") as pgi, open("output.txt","w") as output:
+    pgi_file = pgi.readline()
+    #print(type(pgi_file))
+    split_file = pgi_file.split(',')
+    
+    for lines in split_file:
+        #print(lines)
+        file2 = re.findall('\w+:', lines)
+        for x in file2:
+            print(re.sub(':', ' ', x))                                         #w- looks for all alphab,numb and _(+) up until : 
+            #print(x[:-1])
+            
+            output.write(file2 +'\n')
+    
+
+     #print(list1)
+        #print(re.findall('?=\A\[A,Z]\z', lines))                                #write a regex that finds the first letter and end the search to ':', then save it
+            #split_file.write.output() 
+        
+    #print(type(split_file))
+    #print(split_file)
+    #if re.findall("^[A-Z]", split_file):
+     #  print(split_file)
+        #split_file.write.output()
+        
+#%%
+#c)
+with open("regions.fna") as regions, open("output.fna","w") as output:
+    seq = input('Enter the sequence')
+    output_fasta = []
+    for lines in regions:
+        if re.search(seq, regions):
+            output_fasta.append(lines)
+            
