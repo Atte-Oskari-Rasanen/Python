@@ -49,3 +49,25 @@ to copy the contents of the folder
 
 
 
+
+
+
+with open("file.fna") as file1:
+    def reverseComplement(seq, isDNA=True):
+        if isDNA:                   #make an mRNA
+                seq = seq.replace('T', 'U')
+                #transTable = sequence.maketrans('ATGC', 'TACG')
+        for NT1 in seq:             #we need to make the program read codons into a single AA
+            
+                    
+        complement = sequence.translate(transTable)
+        reverseComp = complement[::-1]
+            
+        return reverseComp
+
+seq1='GATTACA'
+seq2='GAUUGCU'
+print(reverseComplement(seq1))
+print(reverseComplement(seq1, isDNA=False))
+print(reverseComplement(seq2, False))
+
