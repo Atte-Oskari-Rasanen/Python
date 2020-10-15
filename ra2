@@ -1,0 +1,98 @@
+#%%
+'''
+translate dna into rna
+convert rna into AAs by using for loop
+'''
+
+
+
+#write a separate function for reading fasta file into a dictionary
+
+with open("dna.fna") as file1:
+    AA_dict = []
+    AAtable = { 
+            'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M', 
+            'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T', 
+            'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K', 
+            'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',                  
+            'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L', 
+            'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P', 
+            'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q', 
+            'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R', 
+            'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V', 
+            'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A', 
+            'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E', 
+            'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G', 
+            'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S', 
+            'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L', 
+            'TAC':'Y', 'TAT':'Y', 'TAA':'*', 'TAG':'*', 
+            'TGC':'C', 'TGT':'C', 'TGA':'*', 'TGG':'W', 
+        } 
+    #print(table)
+    RNA_dict={}
+    for old_key in AAtable:
+        if 'T' in old_key:
+            new_key= old_key.replace('T','U')
+            RNA_dict[new_key] = AAtable[old_key]
+            #print(new_key)
+        else:
+            #new_key = old_key          #this removes some of the AAs!!!!!
+            RNA_dict[old_key]=AAtable[old_key]
+    #print(RNA_dict)
+
+    #print(RNA_dict)
+#From DNA to RNA
+def DNA_to_RNA(inputfile):
+    DNA_dict={}
+    lista = []
+    with open(inputfile) as file1:
+        seq_dict = {}
+        idheader = None
+        for lines in file1: 
+            if lines.startswith('>'):
+                if idheader:
+                    DNA_dict[idheader]=''.join(lista)
+                    ##del l[:]
+                #id_line=lines                #we'll need the id lines in the end
+                #print(id_line)
+                idheader = lines.strip().replace('>','').split()[0]  #saves the id. cut the lines based on where id starts, the the first
+            else:
+                lista.append(lines.strip())   ##saves the sequences (multiline)
+        print(DNA_dict)
+        return DNA_dict
+                
+                
+                
+                
+                seq_line=next(file1)
+                seq_line = seq_line.replace("\n", "").replace("T","U") 
+                seq_dict[id_line] = seq_line             #make the dna into rna
+                #print(seq_line)
+              #  print(seq_dict)
+    return seq_dict
+#From RNA to protein    
+    def RNA_to_protein():
+        AA=[]                       #create an empty AA table
+        for aline in seq_line:              #iterate through every sequence line
+            for NTs in range(0, len(seq_line), 3):                 #go through the RNA 'codon by codon'
+                codons=seq_line[NTs:NTs +3]
+                #print(codons)
+                AA.append(RNA_dict[codons])
+                AA=''.join(AA)
+        #print(''.join(AA))              #delimiter is empty now ('') meaning that it joins everything togetgher
+        return AA
+print()
+
+    
+    
+    
+    
+    #print(AA)
+            #seq_line=codons.join(codons)
+     #       print(codons)                         #only prints the last created seq_line!
+      #  for codon in range(0, len(seq_line), 3):    #iterate over RNA in codons, if it matches to table value, add it
+       #     AA=AAtable[seq_line[b:b+3]]
+        #    AA+=AA
+        #print(AA)
+        #now we have the codons saved in AA_dict as a list, now iterate through the list
+                                            #and find the corresponding AA    
