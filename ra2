@@ -96,3 +96,28 @@ print()
         #print(AA)
         #now we have the codons saved in AA_dict as a list, now iterate through the list
                                             #and find the corresponding AA    
+  
+  
+  
+  
+  
+  #14
+#with open () as infile
+    seq_list = []
+    for line in infile:
+        if line.startswith(">"):
+            seq = next(infile)
+            seq = seq.strip()
+            seq_list.append(seq)
+#print(seq_list[:4])
+deg GC(string):
+    string = string.upper() #makes them uppercase
+    GC string.count("G") + string.count("C")
+    string_len = len(string)
+    gc_cont = GC / string_len
+    return(gc_cont)
+for seq in seq_list:
+    gc = GCcont(seq)
+    print('{} : {:.2f}'.format(seq,gc*100)
+#{:.2f} takes what ever in second position in two decimals              
+                
