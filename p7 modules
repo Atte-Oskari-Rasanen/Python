@@ -1,0 +1,67 @@
+#1
+def moduleTestPrint () :
+    print ('Testprint from module !')
+
+def getSquared ( number ):
+    return number ** 2
+#%%
+import sys
+import my_bio_module
+
+in_fh = open ( sys . argv [1] , 'r')
+previ_id =None
+for line in in_fh:
+    
+#%%
+'''
+3. Finally, put those functions to use. Write a short program taking a fasta
+
+le and an oligo-sequence as input. Let the program use my_bio_module
+to count how many times the oligo sequence occurs in the fasta 
+le.
+Take both the forward and reverse strand into account. (A third function could be de
+ned in the my_bio_module, using functions (1) and (2)
+to directly calculate the combined number of matches on the forward
+and reverse strand...) Try running your program on regions.fna. For
+the sequence ATGCTA you should receive 23 hits and for CCCCCC 608
+hits.
+'''
+
+import my_bio_module
+with open("regions.fna", "r") asfastaf:
+    oligos = "ATGCTA"
+    fastaf.readlines()
+    for line in fastaf:
+        matches=number_matches(line,oligos)
+    line in fastaf:
+        rev_seq=reverse(line)
+        revmatch=number_matches(rev_seq,oligos)
+    print(matches + revmatch)
+    
+    
+    
+   
+   def GCPercentage(seq, decimals):
+    '''
+    calculates and returns GC-letters percentage in a given string. 
+    enables user to specify the decimal numbers
+    '''
+    lower_seq=seq.lower()
+    gc_count=lower_seq.count('c') + lower_seq.count('g')
+        
+    return round(100* gc_count / len(seq), decimals)
+
+def reverse(seq):
+    return seq[::-1]
+'''
+2. Add an additional function to the my_bio_module module that takes
+a sequence and an oligo sequence and returns the number of oligomatches found
+ in the sequence.
+'''
+
+def number_matches(seq,oligo):
+    matchcount=0
+    for i in seq:
+        if oligo in seq:
+            matchcount+=1
+    print(matchcount)
