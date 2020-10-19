@@ -75,3 +75,21 @@ with open("regions.fna") as regions, open("output.fna","w") as output:
             output_fasta.append(lines)
         print(output_fasta)
             
+
+
+
+#%% Case studies
+#1.
+with open("fungusAssembly.fna", "r") as fungus, open("fungusAssembly.single.fna","w") as output:   #the file too big to open manually, run from the terminal, and make sure that the seq
+    #is printed on an individual line with teh command   less -N fungusAssembly.single.fna 
+    output.write(fungus.readline()) #now it starts reading from the 2nd line as you read the first line now
+    for line in fungus:
+        if not line.startswith('>'):
+            seq=line.replace('\n','')
+            output.write(seq)
+
+        else:
+            header = line
+            output.write('\n' + header) #For the first header this would create a line change, i.e. top line is empty
+            #we dont want this and thus we need to read the first line before the loop
+    print(seq)
