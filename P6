@@ -78,6 +78,8 @@ with open("regions.fna") as regions, open("output.fna","w") as output:
 
 
 
+    
+    
 #%% Case studies
 #1.
 with open("fungusAssembly.fna", "r") as fungus, open("fungusAssembly.single.fna","w") as output:   #the file too big to open manually, run from the terminal, and make sure that the seq
@@ -93,3 +95,61 @@ with open("fungusAssembly.fna", "r") as fungus, open("fungusAssembly.single.fna"
             output.write('\n' + header) #For the first header this would create a line change, i.e. top line is empty
             #we dont want this and thus we need to read the first line before the loop
     print(seq)
+
+
+#3
+def fasta_into_dict(filename):
+    with open(filename, "r") as fasta:
+        Fdict={}
+        #Header=[]
+        for line in fasta:
+            if line.startswith('>'):
+                idkey=line.replace('>', '').split()[0]
+            else:
+                Fdict[idkey]=line
+        return Fdict
+result = fasta_into_dict("regions.fna")
+print(result)    
+
+        
+
+#4
+def filefeatures(gff_file,file_pattern):
+    with open(gff_file) as thefile:
+        tuplelist=[]
+        for line in thefile:
+            if file_pattern in line:
+                columns=line.split('\t')
+                ChrNumb=columns[0]
+                Startpos=columns[3]
+                Endpos=columns[4]
+                
+                tuplelist.append((ChrNumb,Startpos,Endpos))
+                #print(tuplelist)
+    return tuplelist
+wantedinfo=filefeatures("fungus_scaffold.gff", "CDS")
+print(wantedinfo)
+
+#5
+def extract_features(genome, feature
+                     
+                     
+                     )
+genome_dict = fasta_into_dict("fungusAssembly.single.fna")
+feature_coord = filefeatures("fungus_scaffold.gff", "CDS")
+
+
+
+
+
+#%%
+with open("fungus_scaffold.gff") as thefile:
+    
+    for line in thefile:
+        if "CDS" in line:
+            columns=line.split('\t')
+            ChrNumb=columns[0]
+            Startpos=columns[3]
+            Endpos=columns[4]
+            tuplelist=(ChrNumb,Startpos,Endpos)
+        print(tuplelist)
