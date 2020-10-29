@@ -87,8 +87,9 @@ with open("testfile.fna", "r") as file1:
 
 
         Fragments='\t'.join(str(subfrag) for subfrag in Fragments_list).upper()
-                #print(Fragments)
+        #print(Fragments)
         Dict_fragments[ID]=Fragments
+        #print(Dict_fragments)
         frag_count=len(Fragments_list)
         ID_and_frag_count[ID]= str(frag_count)
 
