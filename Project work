@@ -1,0 +1,109 @@
+
+with open("testfile.fna", "r") as file1:
+    def make_dict(fasta):
+        DNA_dict={}
+        lista = []
+        idheader = None
+        for lines in fasta: 
+            if lines.startswith('>'):
+                if idheader:
+                    DNA_dict[idheader]=''.join(lista)
+                    #print(lista)
+                    del lista[:]
+    
+                idheader = lines.strip().split()[0]  #saves the id. cut the lines based on where id starts, the the first
+                #print(idheader)
+            else:
+                lista.append(lines.strip())   ##saves the sequences (multiline)
+                
+                #print(lista)
+        DNA_dict[idheader]=''.join(lista)       #you need to add this once more as the last id+seq ends with a seq instead of the next id
+        del lista[:]    
+        return DNA_dict
+    #get an input file
+    #number of fragments per ID
+    
+    Fasta_dict= make_dict(file1)
+    #print(Fasta_dict)
+    
+    def Choose_enzyme(selection):
+        with open(selection) as enz_file:
+            #how_many=int(input("How many enzymes would you like to select? "))
+            #i=0
+            #while i<3:
+            enzymes=input("Please enter the enzyme name: ")
+            #enz_dict={}
+            for row in enz_file:
+                if enzymes in row:
+                    row=row.split()
+                    Recog_site=row[0]
+                    Recog_site=str(Recog_site)
+                    #print(Recog_site)
+                    #Enz_name=str(row[1:])
+                    #enz_dict[Enz_name]=Recog_site
+            #print(enz_dict)
+            return Recog_site
+           # i+=1
+    
+    Recog_seq=Choose_enzyme("NE_Biolabs_Endonucleases.txt")
+            
+    cut_site=int(Recog_seq.find('/'))        #get the cut site which is noted by / in the sequence
+    Recog_seq=Recog_seq.replace('/','')
+    #print(cut_site)
+        
+                
+    Dict_fragments={}
+    Fragments_list=[]   #used for storing the fragments
+    List_index=[]
+    ID_and_frag_count={}
+    #maybe nmake a index dict with a
+
+    for key,value in Fasta_dict.items():        #iterate over the fasta dict
+        ID=key
+        #print(ID)
+        if Recog_seq in value:     #we want to split the sequence(value) in the spots where the recog.site is and split it based on the nth letter in these sites
+
+            pos=-1
+            List_index=[0]
+            while True:                             #getting the indexes where each recog.site starts
+                pos=value.find(Recog_seq, pos + 1)
+                if pos ==-1:
+                    break
+                #print(pos)
+                pos+=cut_site
+                #print(pos)
+                List_index.append(pos)              #append the indexes into a list
+                #print(List_index)
+            List_index.append(len(value))
+            #print(List_index)
+            
+        for i in range(len(List_index)-1):
+            pos1=List_index[i]
+            #print(pos1)
+            pos2=List_index[i+1]
+            #print(pos2)
+            seq_frag=value[pos1:pos2]
+            Fragments_list.append(seq_frag)
+
+
+        Fragments='\t'.join(str(subfrag) for subfrag in Fragments_list).upper()
+                #print(Fragments)
+        Dict_fragments[ID]=Fragments
+        frag_count=len(Fragments_list)
+        ID_and_frag_count[ID]= str(frag_count)
+
+        #print(ID_and_frag_count)
+        Fragments=''
+        Fragments_list=[]
+
+
+            #print(Dict_fragments)
+with open("outputProject.txt","w") as out1,open("outputProject_Frcount.txt","w") as out2:
+
+    for key,value in Dict_fragments.items():
+        out1.write(key + '\n')
+        out1.write(value + '\n')
+    out2.write('number of fragments per ID: \n')
+    for key,value in ID_and_frag_count.items():
+        out2.write(key + ': ')
+        out2.write(value + '\n')
